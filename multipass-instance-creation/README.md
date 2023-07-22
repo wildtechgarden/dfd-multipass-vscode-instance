@@ -62,7 +62,7 @@ have added it to your path). For example:
 instance's SSH
 
    ```powershell
-   PsExec -s $env:VBOX_MSI_INSTALL_PATH\VBoxManage.exe controlvm "primary" natpf1 "sshvs,tcp,,22222,,22"
+   PsExec -s $Env:VBOX_MSI_INSTALL_PATH\VBoxManage.exe controlvm "primary" natpf1 "sshvs,tcp,,22222,,22"
    ```
 
 ### Steps for accessing the Multipass instance from VSCode
@@ -74,7 +74,7 @@ bottom-left corner of the full VSCode window)
 3. Scroll to the bottom of the list, and select "Configure SSH Hosts…"
 4. Select the `.ssh/config` file in your home directory (Linux) or your
 user profile directory (Windows).
-5. Add a sections such as:
+5. Add a section such as:
 
    ```plaintext
    Host mp-dev
