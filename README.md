@@ -8,6 +8,14 @@ independent reproducible Linux instances; not quite as ephemeral as
 devcontainers in VSCode, but intended not gather cruft, and to be updated
 by recreating the instance.
 
+## Status
+
+TBD
+
+## Repository
+
+<https://github.com/wildtechgarden/dfd-multipass-vscode-instance>
+
 ## Why use Multipass
 
 Daniel uses Multipass rather than VSCode devcontainers because he still uses
