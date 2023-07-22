@@ -245,6 +245,10 @@ and copy the output into this content section (with correct indentation)
 instead of this instructional text.
 ```
 
+I recommend copy `vscode-dev.yaml` to `vscode-dev-secrets.yaml` so that
+the `.gitignore` in this repo will prevent storing the version that includes
+secrets.
+
 ### Note 2
 
 * For `-c 4` you may wish to adjust the 4 (number of CPU cores to give the
