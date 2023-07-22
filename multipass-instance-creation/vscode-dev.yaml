@@ -89,7 +89,7 @@ write_files:
 runcmd:
   - "set -e"
   - "mkdir -p /home/ubuntu/hugo-cache && chmod 0755 /home/ubuntu/hugo-cache && chown ubuntu:ubuntu /home/ubuntu/hugo-cache"
-  - "mkdir -p /home/ubuntu/.gnupg && tar -C /home/ubuntu/.gnupg --strip-components=1 -xf /root/dot.gnupg.tar && rm -f /root/dot.gnupg.tar && chown -R ubuntu:ubuntu /home/ubuntu/.gnupg"
+  - "mkdir -p /home/ubuntu/.gnupg && chmod 0700 /home/ubuntu/.gnupg && tar -C /home/ubuntu/.gnupg --strip-components=1 -xf /root/dot.gnupg.tar && rm -f /root/dot.gnupg.tar && chown -R ubuntu:ubuntu /home/ubuntu/.gnupg"
   - "mkdir -p /home/ubuntu/dfd-git-template && cp -r /usr/share/git-core/templates/* /home/ubuntu/dfd-git-template/ && tar -C /home/ubuntu/dfd-git-template --strip-components=1 -xf /root/dfd-git-template-changes.tar && rm -f /root/dfd-git-template-changes.tar && chown -R ubuntu:ubuntu /home/ubuntu/dfd-git-template"
   - "mv /root/dot.bash_aliases /home/ubuntu/.bash_aliases && chown ubuntu:ubuntu /home/ubuntu/.bash_aliases"
   - "mv /root/dot.gitconfig /home/ubuntu/.gitconfig && chown ubuntu:ubuntu /home/ubuntu/.gitconfig"
