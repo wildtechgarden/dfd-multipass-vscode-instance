@@ -1,0 +1,135 @@
+#cloud-config
+# vim:ft=yaml
+# cspell:disable
+# yamllint disable rule:line-length
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - python3-pip
+  - pipx
+  - git
+  - git-lfs
+  - gitk
+  - ruby-rubygems
+  - build-essential
+  - rclone
+  - ruby-dev
+  - jq
+  - curl
+  - rsync
+ssh_authorized_keys:
+  - Replace with the SSH public key for the private key you wish to use to access the Multipass instance
+write_files:
+  - path: /root/dot.bash_aliases
+    content: |
+      H4sIAAAAAAAAA5WTXU+DMBSG7/srTnAZV9B7TS+WuYgXc2aZ3phlKR9bG+lHaCEas/9uUeaYEJTL
+      vu+Th3OaQnNODSSa+ImGgPuIfgWiIr6oWkEhiF+IVlBx4ksqlY9Q9qZVYeHhebm7vV8TbxKtlgsc
+      ykp4CL1AYMCbNCV2YWiYB1uYTiHsKeAKNowbyBVNDbj0ZPhoyCOOqWG7RAmdZ5Yr2ZINMB0v/EIQ
+      Eq8pLyDQtaheoWMJU7cQ34ObKAVcmgLnKqE5PigccwnbG7AskwjgcbaJSAe4dt66OXoOaS6tPqM9
+      b2krWuCUWor1u2VK9pp7mH/Jf/bqOlvVKFX4veGA8UyMEvdf6mU7blKpRXDIVfzHuJfY4Ceac/R0
+      t9rNZ/NoUb9/zJTIcBmX0paYlQcVJDRh2Ql2zGa1JvW/gz4BNjw2aX4DAAA=
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dot.gnupg.tar
+    content: |
+      Linux: Create file from existing ~/.gnupg with the following command:
+
+      tar -czf - ~/.gnupg | base64
+
+      and copy the output into this content section (with correct indentation)
+      instead of this instructional text.
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o600'
+  - path: /root/dot.editorconfig
+    content: |
+      root = true
+
+      [*]
+      tab_width = 3
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dot.gitconfig
+    content: |
+      [core]
+              fileMode = true
+              eol = lf
+              autocrlf = false
+      [user]
+              useConfigOnly = true
+
+      [pull]
+              ff = only
+      [init]
+              defaultBranch = main
+              templateDir = /home/ubuntu/dfd-git-template
+      [tag]
+              gpgSign = true
+      [commit]
+              gpgSign = true
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dfd-git-template-changes.tar
+    content: |
+      H4sIAAAAAAAAA+3WzWrbQBAAYF2tp5hSaC6VrX8dSktLQy59BBPIShrJS1a7Yn+S+u27qkkdAq5K
+      oiSEzncR0o68xjOz47Zro57byOIwCmYxanZM9mg2wXJir6qK6ZpURXz/eidI8jwt4iSusjKIkyLN
+      iwCKBb/DSc5YpgECVztp3V/iZtbfqPZU/hslO94vsseU4LLMT+Y/i7MH+S/zLAkgXmT3Gf95/reN
+      0ngZrjSOynCr9L5TemD2BrXhSsJniMNVxwUOqkV/Z7XDcFUzPd10TBh/J1TPhNDYubH1JWTuwrbO
+      oPafLdkwRZ8zyVHAxRrOeXPNpVEyXOHAuPCLvg5HVwvefL3lorXY7HqmW5TrhoUrw3vJZf8D9z7y
+      e55dpHlWfEvKrEzSPHztn/BNO9n/O6WuF5oC/3r+52WZZmn1u//9Izr/X8BM/hs1DH51ME+ZBHP5
+      z+LqT/7TxD9P46yi8/9FvH+3cUZvai43KG+gZmYX8g62EHWwHrWvh0MFHP4OrPdsEHD5CewOZQie
+      P6gVnB0D4RDoNLPT+PDDBHx5CS4ttOiPdYvtR6idhat77/hZYP0EgSiaqi6y+xHhWHlXcMsMSPQj
+      CbSTZ5B8+ZAeNv/pX07CjtMMeKyZ/j8m6Ql7zPV/mufU/6/kmft/tuepuQkhhBBCCCGEEEIIIYQQ
+      Qpb1CwrVgyEAKAAA
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o644'
+runcmd:
+  - "set -e"
+  - "mkdir -p /home/ubuntu/hugo-cache && chmod 0755 /home/ubuntu/hugo-cache && chown ubuntu:ubuntu /home/ubuntu/hugo-cache"
+  - "mkdir -p /home/ubuntu/.gnupg && tar -C /home/ubuntu/.gnupg --strip-components=1 -xf /root/dot.gnupg.tar && rm -f /root/dot.gnupg.tar && chown -R ubuntu:ubuntu /home/ubuntu/.gnupg"
+  - "mkdir -p /home/ubuntu/dfd-git-template && cp -r /usr/share/git-core/templates/* /home/ubuntu/dfd-git-template/ && tar -C /home/ubuntu/dfd-git-template --strip-components=1 -xf /root/dfd-git-template-changes.tar && rm -f /root/dfd-git-template-changes.tar && chown -R ubuntu:ubuntu /home/ubuntu/dfd-git-template"
+  - "mv /root/dot.bash_aliases /home/ubuntu/.bash_aliases && chown ubuntu:ubuntu /home/ubuntu/.bash_aliases"
+  - "mv /root/dot.gitconfig /home/ubuntu/.gitconfig && chown ubuntu:ubuntu /home/ubuntu/.gitconfig"
+  - "mv /root/dot.editorconfig /home/ubuntu/.editorconfig && chown ubuntu:ubuntu /home/ubuntu/.editorconfig"
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"extended\") and \
+      contains(\"Linux-64bit\") and contains(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin -xzf - hugo
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/sass/dart-sass-embedded/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"linux-x64\") and \
+      contains(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin --strip-components=1 -xzf -
+  - |
+      curl -sL https://go.dev/dl/go1.20.6.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  - |
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm install --lts" && \
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm use --lts"
+  - |
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
+  - |
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "\
+      cd /home/ubuntu && git clone https://gitlab.com/danielfdickinson/dfd-hugo-theme-zen.git && \
+      cd dfd-hugo-theme-zen && \
+      pre-commit install --install-hooks && \
+      pre-commit install --install-hooks -t commit-msg && \
+      git checkout -b test-pre-commit-install && \
+      pre-commit run --all-files && \
+      cd .. && \
+      rm -rf dfd-hugo-theme-zen \
+      "

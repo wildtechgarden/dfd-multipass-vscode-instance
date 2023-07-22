@@ -1,0 +1,25 @@
+{
+    "recommendations": [
+        "samuelcolvin.jinjahtml",
+        "bungcip.better-toml",
+        "streetsidesoftware.code-spell-checker",
+        "editorconfig.editorconfig",
+        "mitchdenny.ecdc",
+        "dbaeumer.vscode-eslint",
+        "donjayamanne.githistory",
+        "github.vscode-pull-request-github",
+        "gitlab.gitlab-workflow",
+        "ecmel.vscode-html-css",
+        "davidanson.vscode-markdownlint",
+        "ms-vscode.powershell",
+        "stylelint.vscode-stylelint",
+        "dotjoshjohnson.xml",
+        "redhat.vscode-yaml",
+        "wdhongtw.gpg-indicator",
+        "felipecaputo.git-project-manager",
+        "bmewburn.vscode-intelephense-client",
+        "eiminsasete.apacheconf-snippets",
+        "ms-python.vscode-pylance",
+        "ms-python.python"
+    ]
+}
