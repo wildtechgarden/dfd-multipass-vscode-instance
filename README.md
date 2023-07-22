@@ -10,7 +10,8 @@ by recreating the instance.
 
 ## Status
 
-TBD
+[![pre-commit.ci
+status](https://results.pre-commit.ci/badge/github/wildtechgarden/dfd-multipass-vscode-instance/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/dfd-multipass-vscode-instance/main)
 
 ## Repository
 
