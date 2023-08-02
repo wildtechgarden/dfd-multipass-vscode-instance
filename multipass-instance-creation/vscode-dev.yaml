@@ -106,7 +106,7 @@ runcmd:
       end") | tar -C /usr/local/bin -xzf - hugo
   - |
       curl -sL $(curl -s \
-      https://api.github.com/repos/sass/dart-sass-embedded/releases/latest | jq -r \
+      https://api.github.com/repos/sass/dart-sass/releases/latest | jq -r \
       ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
       \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
       if (.[0] | contains(\$version) and contains(\"linux-x64\") and \
@@ -115,19 +115,18 @@ runcmd:
       else empty \
       end") | tar -C /usr/local/bin --strip-components=1 -xzf -
   - |
-      curl -sL https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz | tar -C /usr/local -xzf -
+      curl -sL https://go.dev/dl/$(curl -s 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz | tar -C /usr/local -xzf -
   - |
-      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
+      curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm install --lts" && \
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm use --lts"
-  - |
-      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
   - |
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "\
       cd /home/ubuntu && git clone https://gitlab.com/danielfdickinson/dfd-hugo-theme-zen.git && \
       cd dfd-hugo-theme-zen && \
-      pre-commit install --install-hooks && \
-      pre-commit install --install-hooks -t commit-msg && \
+      pre-commit install --install-hooks -f && \
+      pre-commit install --install-hooks -t commit-msg -f && \
       git checkout -b test-pre-commit-install && \
       pre-commit run --all-files && \
       cd .. && \

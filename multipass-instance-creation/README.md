@@ -38,13 +38,13 @@ default hypervisor.
       * For Windows, in a PowerShell:
 
         ```powershell
-         multipass launch -c 4 -d 40G -m 4G -n hugo-dev --cloud-init .\vscode-dev.yaml --timeout 2400
+         multipass launch -c 4 -d 40G -m 4G -n hugo-dev --cloud-init .\vscode-dev.yaml --timeout 2400 lts
          ```
 
       * For Linux, in a bash shell:
 
         ```bash
-         multipass launch -c 4 -d 40G -m 4G -n hugo-dev --cloud-init ./vscode-dev.yaml --timeout 2400
+         multipass launch -c 4 -d 40G -m 4G -n hugo-dev --cloud-init ./vscode-dev.yaml --timeout 2400 lts
         ```
 
       See [\[Note 2\]](#note-2)
