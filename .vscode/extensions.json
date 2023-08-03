@@ -10,6 +10,7 @@
         "gitlab.gitlab-workflow",
         "ecmel.vscode-html-css",
         "davidanson.vscode-markdownlint",
+        "golang.go",
         "ms-vscode.powershell",
         "stylelint.vscode-stylelint",
         "dotjoshjohnson.xml",
@@ -20,6 +21,8 @@
         "eiminsasete.apacheconf-snippets",
         "ms-python.vscode-pylance",
         "ms-python.python",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "budparr.language-hugo-vscode",
+        "mrmlnc.vscode-apache"
     ]
 }
