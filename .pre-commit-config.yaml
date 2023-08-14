@@ -86,13 +86,13 @@ repos:
     exclude: ^(.*/LICENSE|.vscode|netlify.sample.toml$)
 
 - repo: "https://github.com/streetsidesoftware/cspell-cli"
-  rev: v6.31.1
+  rev: v7.0.0
   hooks:
   - id: cspell
     additional_dependencies:
     - "@cspell/cspell-pipe"
-    - cspell@6.31.0
-    - cspell-cli@6.31.0
+    - cspell@7.0.0
+    - cspell-cli@7.0.0
     args:
     - --gitignore
     - --gitignore-root
