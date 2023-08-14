@@ -115,7 +115,7 @@ runcmd:
       else empty \
       end") | tar -C /usr/local/bin --strip-components=1 -xzf -
   - |
-      curl -sL https://go.dev/dl/$(curl -s 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz | tar -C /usr/local -xzf -
+      curl -sL https://go.dev/dl/$(curl -s 'https://go.dev/VERSION?m=text'|head -n1).linux-amd64.tar.gz | tar -C /usr/local -xzf -
   - |
       curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm install --lts" && \
