@@ -6,18 +6,18 @@ package_update: true
 package_upgrade: true
 package_reboot_if_required: true
 packages:
-  - python3-pip
-  - pipx
+  - build-essential
+  - curl
+  - jq
   - git
   - git-lfs
   - gitk
-  - ruby-rubygems
-  - build-essential
+  - python3-pip
+  - pipx
   - rclone
-  - ruby-dev
-  - jq
-  - curl
   - rsync
+  - ruby-dev
+  - ruby-rubygems
 ssh_authorized_keys:
   - Replace with the SSH public key for the private key you wish to use to access the Multipass instance
 write_files:
