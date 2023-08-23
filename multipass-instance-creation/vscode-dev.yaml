@@ -8,6 +8,7 @@ package_reboot_if_required: true
 packages:
   - build-essential
   - curl
+  - default-jre
   - jq
   - git
   - git-lfs
