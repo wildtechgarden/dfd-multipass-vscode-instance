@@ -10,7 +10,6 @@
         "gitlab.gitlab-workflow",
         "ecmel.vscode-html-css",
         "davidanson.vscode-markdownlint",
-        "golang.go",
         "ms-vscode.powershell",
         "stylelint.vscode-stylelint",
         "dotjoshjohnson.xml",
@@ -24,6 +23,10 @@
         "tamasfe.even-better-toml",
         "budparr.language-hugo-vscode",
         "mrmlnc.vscode-apache",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "jinliming2.vscode-go-template",
+        "streetsidesoftware.code-spell-checker-french",
+        "streetsidesoftware.code-spell-checker-french-reforme",
+        "streetsidesoftware.code-spell-checker-canadian-english"
     ]
 }
