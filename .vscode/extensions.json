@@ -23,6 +23,7 @@
         "ms-python.python",
         "tamasfe.even-better-toml",
         "budparr.language-hugo-vscode",
-        "mrmlnc.vscode-apache"
+        "mrmlnc.vscode-apache",
+        "eamodio.gitlens"
     ]
 }
