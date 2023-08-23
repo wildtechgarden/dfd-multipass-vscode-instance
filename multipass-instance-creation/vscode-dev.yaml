@@ -143,8 +143,7 @@ runcmd:
       else empty \
       end")
   - sudo chown ubuntu:ubuntu /home/ubuntu/vnu.jar.zip
-  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && unzip vnu.jar.zip && mkdir -p jar && mv dist/vnu.jar jar/ && mv dist/index.html jar/ && mv dist/README.md jar/ && rm -rf dist"
-  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && mkdir -p .local/bin && echo \"#!/bin/sh$'\n'exec java -jar /home/ubuntu/jar/vnu.jar \\\"\\\$@\\\"\" >.local/bin/vnu && chmod 755 .local/bin/vnu && rm -f /home/ubuntu/vnu.jar.zip"
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && unzip vnu.jar.zip && mkdir -p jar && mv dist/vnu.jar jar/ && mv dist/index.html jar/ && mv dist/README.md jar/ && rm -rf dist && rm -f /home/ubuntu/vnu.jar.zip"
   - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
   - |
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "\
