@@ -19,6 +19,7 @@ packages:
   - rsync
   - ruby-dev
   - ruby-rubygems
+  - unzip
 ssh_authorized_keys:
   - Replace with the SSH public key for the private key you wish to use to access the Multipass instance
 write_files:
@@ -101,7 +102,7 @@ runcmd:
       ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
       \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
       if (.[0] | contains(\$version) and contains(\"extended\") and \
-      contains(\"Linux-64bit\") and contains(\".tar.gz\")) \
+      contains(\"Linux-64bit\") and endswith(\".tar.gz\")) \
       then .[1] \
       else empty \
       end") | tar -C /usr/local/bin -xzf - hugo
@@ -111,7 +112,7 @@ runcmd:
       ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
       \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
       if (.[0] | contains(\$version) and contains(\"linux-x64\") and \
-      contains(\".tar.gz\")) \
+      endswith(\".tar.gz\")) \
       then .[1] \
       else empty \
       end") | tar -C /usr/local/bin --strip-components=1 -xzf -
@@ -121,6 +122,29 @@ runcmd:
       curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm install --lts" && \
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm use --lts"
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/raviqqe/muffet/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\"linux_amd64\") and \
+      endswith(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin -xzf - muffet
+  - |
+      curl -o /home/ubuntu/vnu.jar.zip -sL $(curl -s \
+      https://api.github.com/repos/validator/validator/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"vnu.jar\") and \
+      endswith(\"zip\")) \
+      then .[1] \
+      else empty \
+      end")
+  - sudo chown ubuntu:ubuntu /home/ubuntu/vnu.jar.zip
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && unzip vnu.jar.zip && mkdir -p jar && mv dist/vnu.jar jar/ && mv dist/index.html jar/ && mv dist/README.md jar/ && rm -rf dist"
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && mkdir -p .local/bin && echo \"#!/bin/sh$'\n'exec java -jar /home/ubuntu/jar/vnu.jar \\\"\\\$@\\\"\" >.local/bin/vnu && chmod 755 .local/bin/vnu && rm -f /home/ubuntu/vnu.jar.zip"
   - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
   - |
       sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "\
