@@ -67,7 +67,7 @@ repos:
     exclude: ^(_vendor|multipass-instance-creation/vscode-dev.yaml$)
 
 - repo: "https://github.com/zricethezav/gitleaks"
-  rev: v8.17.0
+  rev: v8.18.0
   hooks:
   - id: gitleaks
 
@@ -86,7 +86,7 @@ repos:
     exclude: ^(.*/LICENSE|.vscode|netlify.sample.toml$)
 
 - repo: "https://github.com/streetsidesoftware/cspell-cli"
-  rev: v7.0.0
+  rev: v7.0.1
   hooks:
   - id: cspell
     additional_dependencies:
