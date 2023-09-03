@@ -18,7 +18,9 @@
 		".vscode",
 		"**/LICENSE",
 		"cspell.json",
+		"dfd-multipass-vscode.code-workspace",
 		"node_modules",
+		"package*.json",
 		"./words-*.txt"
 	],
 	"ignoreWords": [],
