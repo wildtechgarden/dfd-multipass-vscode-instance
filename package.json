@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "@cspell/dict-en-ca": "^1.0.3",
+    "@cspell/dict-en-ca": "^1.0.4",
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-fr-reforme": "^2.2.2",
-    "cspell": "^7.3.2",
-    "cspell-cli": "^7.3.0"
+    "cspell": "^7.3.8",
+    "cspell-cli": "^7.3.2"
   }
 }
