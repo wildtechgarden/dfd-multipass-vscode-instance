@@ -75,16 +75,16 @@ write_files:
     permissions: '0o644'
   - path: /root/dfd-git-template-changes.tar
     content: |
-      H4sIAAAAAAAAA+3WzWrbQBAAYF2tp5hSaC6VrX8dSktLQy59BBPIShrJS1a7Yn+S+u27qkkdAq5K
-      oiSEzncR0o68xjOz47Zro57byOIwCmYxanZM9mg2wXJir6qK6ZpURXz/eidI8jwt4iSusjKIkyLN
-      iwCKBb/DSc5YpgECVztp3V/iZtbfqPZU/hslO94vsseU4LLMT+Y/i7MH+S/zLAkgXmT3Gf95/reN
-      0ngZrjSOynCr9L5TemD2BrXhSsJniMNVxwUOqkV/Z7XDcFUzPd10TBh/J1TPhNDYubH1JWTuwrbO
-      oPafLdkwRZ8zyVHAxRrOeXPNpVEyXOHAuPCLvg5HVwvefL3lorXY7HqmW5TrhoUrw3vJZf8D9z7y
-      e55dpHlWfEvKrEzSPHztn/BNO9n/O6WuF5oC/3r+52WZZmn1u//9Izr/X8BM/hs1DH51ME+ZBHP5
-      z+LqT/7TxD9P46yi8/9FvH+3cUZvai43KG+gZmYX8g62EHWwHrWvh0MFHP4OrPdsEHD5CewOZQie
-      P6gVnB0D4RDoNLPT+PDDBHx5CS4ttOiPdYvtR6idhat77/hZYP0EgSiaqi6y+xHhWHlXcMsMSPQj
-      CbSTZ5B8+ZAeNv/pX07CjtMMeKyZ/j8m6Ql7zPV/mufU/6/kmft/tuepuQkhhBBCCCGEEEIIIYQQ
-      Qpb1CwrVgyEAKAAA
+      H4sICAXzL2UAA2RmZC1naXQtdGVtcGxhdGUtY2hhbmdlcy50YXIA7ZbLbtswEEW9tb5iigLNprL1
+      VoGiRVMk2fQTjAChpJFEhCIFPpL670vVSOyN7QBxYwSdsyFIDjWS7lySTduEHbehxWEUzGJY90x2
+      aJaz0xF5yjKf2rjMo932iVmc5XFalnGSF7MozqcG8hO+w16csUwDzFzlpHUH4o7Mv1Oaffr3St2f
+      qApepn+WZEWRpEnp9S8yP0T6vwFH9K/VMPjZwXSvyHFM/zQqn/VPYj+eRGkZzyA62Vce4D/X/+OH
+      pTN6WXG5RPkAFTN9wFtYQdjCYtS+HjYVUCvZ8m6xZoOA269ge5QBeLDuFVxsA2ET6DSzXElolQZf
+      XoJLCw1arC02n6FyFu521nDpRRACwnCqutCuR4Rt5d3BIzMg8QE1aCcvIP7+Kdkk/+0Xx0HLg3P/
+      xnfLEf9vRXpFjmP+T7KM/H8m/rH/j3qezH1e9vp/o+NJckweL4rswPmfPt//0zj7e/9Lc/L/W7Cq
+      lcbbYK5xVIZbpdf+yB6Y9X40k4G/QRTMWy5wUA36ntUOg3nF9NRpmTC+J1TnnayxdWPjS8g8ha2c
+      Qe2fLdkwRV8xyVHAzQKueH3v/a9kMMeBceEnfR2OrhK8/vHIReM3jb5jukG5qFkwN7yTXHa/cO0j
+      b4rrL1meXkc/o8vs+jKj7YEgCIIgCIIgCIIgCIIgCIIgCGKXP/uofKAAKAAA
     encoding: gz+b64
     owner: root:root
     permissions: '0o644'
