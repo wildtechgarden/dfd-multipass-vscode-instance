@@ -64,7 +64,7 @@ repos:
   rev: v1.32.0
   hooks:
   - id: yamllint
-    exclude: ^(_vendor|multipass-instance-creation/vscode-dev.yaml$)
+    exclude: ^(_vendor|multipass-instance-creation/vscode-.?dev.yaml$)
 
 - repo: "https://github.com/zricethezav/gitleaks"
   rev: v8.18.0

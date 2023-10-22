@@ -1,0 +1,157 @@
+#cloud-config
+# vim:ft=yaml
+# cspell:disable
+# yamllint disable rule:line-length
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - build-essential
+  - curl
+  - default-jre
+  - jq
+  - git
+  - git-lfs
+  - gitk
+  - python3-pip
+  - pipx
+  - rclone
+  - rsync
+  - ruby-dev
+  - ruby-rubygems
+  - unzip
+ssh_authorized_keys:
+  - Replace with the SSH public key for the private key you wish to use to access the Multipass instance
+write_files:
+  - path: /root/dot.bash_aliases
+    content: |
+      H4sIAAAAAAAAA5WTXU+DMBSG7/srTnAZV9B7TS+WuYgXc2aZ3phlKR9bG+lHaCEas/9uUeaYEJTL
+      vu+Th3OaQnNODSSa+ImGgPuIfgWiIr6oWkEhiF+IVlBx4ksqlY9Q9qZVYeHhebm7vV8TbxKtlgsc
+      ykp4CL1AYMCbNCV2YWiYB1uYTiHsKeAKNowbyBVNDbj0ZPhoyCOOqWG7RAmdZ5Yr2ZINMB0v/EIQ
+      Eq8pLyDQtaheoWMJU7cQ34ObKAVcmgLnKqE5PigccwnbG7AskwjgcbaJSAe4dt66OXoOaS6tPqM9
+      b2krWuCUWor1u2VK9pp7mH/Jf/bqOlvVKFX4veGA8UyMEvdf6mU7blKpRXDIVfzHuJfY4Ceac/R0
+      t9rNZ/NoUb9/zJTIcBmX0paYlQcVJDRh2Ql2zGa1JvW/gz4BNjw2aX4DAAA=
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dot.gnupg.tar
+    content: |
+      Linux: Create file from existing ~/.gnupg with the following command:
+
+      tar -czf - ~/.gnupg | base64
+
+      and copy the output into this content section (with correct indentation)
+      instead of this instructional text.
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o600'
+  - path: /root/dot.editorconfig
+    content: |
+      root = true
+
+      [*]
+      tab_width = 3
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dot.gitconfig
+    content: |
+      [core]
+              fileMode = true
+              eol = lf
+              autocrlf = false
+      [user]
+              useConfigOnly = true
+
+      [pull]
+              ff = only
+      [init]
+              defaultBranch = main
+              templateDir = /home/ubuntu/dfd-git-template
+      [tag]
+              gpgSign = true
+      [commit]
+              gpgSign = true
+    owner: root:root
+    permissions: '0o644'
+  - path: /root/dfd-git-template-changes.tar
+    content: |
+      H4sIAAAAAAAAA+2Wz27bMAzGfY2fgsOA9TIntvzvMGzYodhLBAWq2HQiVJYMSe6Wtx+9LEsxIHOB
+      pi228XcRJBGWzY8f5bZrk60KScB+0DJg0uyk2aJfRZcjJeqynMasLtOH45EoK8qszPIyz0WUZmVa
+      1RGUF3yHs4w+SAcQtdIo1Ofj5vb/Utpz+u+svbtQFTxO/0IUVSVyUZP+lRCC9X8JZvQfHK3Yvlfh
+      CWfM6S+K4pf+IqN1kYosjyC92Ff+gf9c/7dvVqN3q40yKzT3sJF+F6sO1pB0sDypT4Pp1Ha5l72G
+      mw8QdmhiILDZWbg6BcIhcHQyKGugxYBNwPY9bMYAtw/ilKHEa30LX6UHg/fowI3mCrJP78Thyd8o
+      Kos7Fb92jv5lZvz/U/3eb59wxpz/87Rm/78Sz+z/zjqg8tLKhPleAEkyVV0S9gPCqfK4RTwjZ/1/
+      0PEiZ0wer+iOP3//17/9/1eiEuz/l2DdWIc38cLhYL0K1u3Jsr0MZDY/GfgjpPGiUxp72yLNghsx
+      Xmykmyad1J5m2m7JvQ67cWiphPwxbD16dPRsI/sp+vpHBuHLEq5Vc0eetyZeYC+Vps1DepMuaY97
+      n+0YNLWDJXUC9jfDMAzDMAzDMAzDMAzDMAzDMMxj+Q4J6Ho1ACgAAA==
+    encoding: gz+b64
+    owner: root:root
+    permissions: '0o644'
+runcmd:
+  - "set -e"
+  - "mkdir -p /home/ubuntu/hugo-cache && chmod 0755 /home/ubuntu/hugo-cache && chown ubuntu:ubuntu /home/ubuntu/hugo-cache"
+  - "mkdir -p /home/ubuntu/.gnupg && chmod 0700 /home/ubuntu/.gnupg && tar -C /home/ubuntu/.gnupg --strip-components=1 -xf /root/dot.gnupg.tar && rm -f /root/dot.gnupg.tar && chown -R ubuntu:ubuntu /home/ubuntu/.gnupg"
+  - "mkdir -p /home/ubuntu/dfd-git-template && cp -r /usr/share/git-core/templates/* /home/ubuntu/dfd-git-template/ && tar -C /home/ubuntu/dfd-git-template --strip-components=1 -xf /root/dfd-git-template-changes.tar && rm -f /root/dfd-git-template-changes.tar && chown -R ubuntu:ubuntu /home/ubuntu/dfd-git-template"
+  - "mv /root/dot.bash_aliases /home/ubuntu/.bash_aliases && chown ubuntu:ubuntu /home/ubuntu/.bash_aliases"
+  - "mv /root/dot.gitconfig /home/ubuntu/.gitconfig && chown ubuntu:ubuntu /home/ubuntu/.gitconfig"
+  - "mv /root/dot.editorconfig /home/ubuntu/.editorconfig && chown ubuntu:ubuntu /home/ubuntu/.editorconfig"
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"extended\") and \
+      contains(\"Linux-64bit\") and endswith(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin -xzf - hugo
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/sass/dart-sass/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name | ltrimstr(\"v\") as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"linux-x64\") and \
+      endswith(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin --strip-components=1 -xzf -
+  - |
+      curl -sL https://go.dev/dl/$(curl -s 'https://go.dev/VERSION?m=text'|head -n1).linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  - |
+      curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -H -u ubuntu bash && \
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm install --lts" && \
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && nvm use --lts"
+  - |
+      curl -sL $(curl -s \
+      https://api.github.com/repos/raviqqe/muffet/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\"linux_amd64\") and \
+      endswith(\".tar.gz\")) \
+      then .[1] \
+      else empty \
+      end") | tar -C /usr/local/bin -xzf - muffet
+  - |
+      curl -o /home/ubuntu/vnu.jar.zip -sL $(curl -s \
+      https://api.github.com/repos/validator/validator/releases/latest | jq -r \
+      ". as \$artifacts | .tag_name as \$version | \
+      \$artifacts | .assets | .[] | [.name, .browser_download_url] | \
+      if (.[0] | contains(\$version) and contains(\"vnu.jar\") and \
+      endswith(\"zip\")) \
+      then .[1] \
+      else empty \
+      end")
+  - sudo chown ubuntu:ubuntu /home/ubuntu/vnu.jar.zip
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && unzip vnu.jar.zip && mkdir -p jar && mv dist/vnu.jar jar/ && mv dist/index.html jar/ && mv dist/README.md jar/ && rm -rf dist && rm -f /home/ubuntu/vnu.jar.zip"
+  - sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "cd /home/ubuntu && pipx install pre-commit"
+  - |
+      sudo -H -u ubuntu env BASH_ENV=/home/ubuntu/.bash_aliases bash -c "\
+      cd /home/ubuntu && git clone https://gitlab.com/danielfdickinson/dfd-hugo-theme-zen.git && \
+      cd dfd-hugo-theme-zen && \
+      pre-commit install --install-hooks -f && \
+      pre-commit install --install-hooks -t commit-msg -f && \
+      git checkout -b test-pre-commit-install && \
+      pre-commit run --all-files && \
+      cd .. && \
+      rm -rf dfd-hugo-theme-zen \
+      "
