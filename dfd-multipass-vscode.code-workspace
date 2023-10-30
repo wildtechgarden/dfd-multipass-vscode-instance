@@ -37,7 +37,6 @@
 			"eiminsasete.apacheconf-snippets",
 			"ms-python.vscode-pylance",
 			"ms-python.python",
-			"tamasfe.even-better-toml",
 			"budparr.language-hugo-vscode",
 			"mrmlnc.vscode-apache",
 			"eamodio.gitlens",
@@ -45,7 +44,8 @@
 			"streetsidesoftware.code-spell-checker-french",
 			"streetsidesoftware.code-spell-checker-french-reforme",
 			"streetsidesoftware.code-spell-checker-canadian-english",
-			"yzhang.markdown-all-in-one"
+			"yzhang.markdown-all-in-one",
+			"be5invis.toml"
 		]
 	}
 }
