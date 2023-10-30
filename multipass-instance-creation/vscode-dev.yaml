@@ -59,6 +59,7 @@ write_files:
               fileMode = true
               eol = lf
               autocrlf = false
+              editor = code --wait
       [user]
               useConfigOnly = true
 
