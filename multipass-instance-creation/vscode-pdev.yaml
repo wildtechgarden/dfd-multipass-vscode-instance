@@ -75,15 +75,16 @@ write_files:
     permissions: '0o644'
   - path: /root/dfd-git-template-changes.tar
     content: |
-      H4sIAAAAAAAAA+2Wz27bMAzGfY2fgsOA9TIntvzvMGzYodhLBAWq2HQiVJYMSe6Wtx+9LEsxIHOB
-      pi228XcRJBGWzY8f5bZrk60KScB+0DJg0uyk2aJfRZcjJeqynMasLtOH45EoK8qszPIyz0WUZmVa
-      1RGUF3yHs4w+SAcQtdIo1Ofj5vb/Utpz+u+svbtQFTxO/0IUVSVyUZP+lRCC9X8JZvQfHK3Yvlfh
-      CWfM6S+K4pf+IqN1kYosjyC92Ff+gf9c/7dvVqN3q40yKzT3sJF+F6sO1pB0sDypT4Pp1Ha5l72G
-      mw8QdmhiILDZWbg6BcIhcHQyKGugxYBNwPY9bMYAtw/ilKHEa30LX6UHg/fowI3mCrJP78Thyd8o
-      Kos7Fb92jv5lZvz/U/3eb59wxpz/87Rm/78Sz+z/zjqg8tLKhPleAEkyVV0S9gPCqfK4RTwjZ/1/
-      0PEiZ0wer+iOP3//17/9/1eiEuz/l2DdWIc38cLhYL0K1u3Jsr0MZDY/GfgjpPGiUxp72yLNghsx
-      Xmykmyad1J5m2m7JvQ67cWiphPwxbD16dPRsI/sp+vpHBuHLEq5Vc0eetyZeYC+Vps1DepMuaY97
-      n+0YNLWDJXUC9jfDMAzDMAzDMAzDMAzDMAzDMMxj+Q4J6Ho1ACgAAA==
+      H4sIAAAAAAAAA+2WUW/TMBDH89p8ikNI7GVpYzdJNyEQsIkXPkI1aW5zSa0ldmU7g357LnRdJ6QS
+      pHWbBvd7sWyf4uT+9z+nrMqk1iEJ2K4bFTBZrpSp0U+i45ESszzvRzHL04fjjkhkuZgVUyHSWZSK
+      PJ3JCPIjvsNBOh+UA4hKZTQ2h+OG9l8p5SH9V9beHKkK/k7/TGZFIaey17+QkvV/Fgb0XztasW2r
+      wyPOGNJfZtm9/lLQukylmEaQHu0r/8B/rv/bN5POu8lCmwmaW1gov4p1BXNIKhjv1afBVLoeb1Tb
+      wNV7CCs0MRC4XFk42QfCNrBzKmhroMSAy4DlKSy6ANcP4rShxDfNNXxXHgzeogPXmRMQH9/J7ZN/
+      UJSIKx2/dI7+ZQb8f6d+6+tHnDHk/ynd+ez/l+GJ/V9ZB1RejTZhuBdAkvRVl4TNGmFfedwinpCD
+      /t/qeJQzeo8XdMcf9n/x2/9/IQvB/n8O5kvr8CoeOVxbr4N1G7JsqwKZzfcG/gBpPKp0g60tkWbB
+      dRiPFsr1k0o1nmaNrcm9DqtuXVIJ+V3YvPPo6NlGtX305a8MwtcxXOrlDXnemniErdINbW7Tm1RJ
+      udv7ZLvQUDsYUyeIR17XRpv6G24oOM/PL9JM5Bdn51/k5+yM7c8wDMMwDMMwDMMwDMMwDMMwDHPP
+      T+MfaCEAKAAA
     encoding: gz+b64
     owner: root:root
     permissions: '0o644'
