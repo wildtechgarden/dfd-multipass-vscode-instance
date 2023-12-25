@@ -54,20 +54,20 @@ repos:
     args: [--markdown-linebreak-ext=md]
 
 - repo: "https://github.com/igorshubovych/markdownlint-cli"
-  rev: v0.37.0
+  rev: v0.38.0
   hooks:
   - id: markdownlint
     args: [--config, .markdownlint.json]
     files: .+\.(md|markdown)$
 
 - repo: "https://github.com/adrienverge/yamllint"
-  rev: v1.32.0
+  rev: v1.33.0
   hooks:
   - id: yamllint
     exclude: ^(_vendor|multipass-instance-creation/vscode-.?dev.yaml$)
 
 - repo: "https://github.com/zricethezav/gitleaks"
-  rev: v8.18.0
+  rev: v8.18.1
   hooks:
   - id: gitleaks
 
@@ -86,7 +86,7 @@ repos:
     exclude: ^(.*/LICENSE|.vscode|package(-lock)?\.json|.*\.code-workspace$)
 
 - repo: "https://github.com/streetsidesoftware/cspell-cli"
-  rev: v7.3.2
+  rev: v8.2.0
   hooks:
   - id: cspell
     additional_dependencies:
